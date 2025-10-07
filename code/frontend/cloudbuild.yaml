@@ -31,7 +31,8 @@ steps:
        - '--region=$_REGION'
        - '--allow-unauthenticated' # Use this flag if you want public access to the service 
 options:
-  logging: CLOUD_LOGGING_ONLY       
+  logging: CLOUD_LOGGING_ONLY
+  dir: 'frontend'
 substitutions:
   _REGION: asia-south1
   _BASENAME: todo
