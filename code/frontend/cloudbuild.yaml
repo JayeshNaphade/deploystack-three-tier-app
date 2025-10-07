@@ -16,10 +16,10 @@ steps:
    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
      entrypoint: bash
      args: [ './massage.sh', '$_REGION' ]
-     dir: 'frontend'
+     dir: 'code/frontend'
    - name: 'gcr.io/cloud-builders/docker'
      args: [ 'build', '-t', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe', '.' ]
-     dir: 'frontend'
+     dir: 'code/frontend'
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe']
   # Finally, deploy the image to Cloud Run.
@@ -32,7 +32,7 @@ steps:
        - '--platform=managed'
        - '--region=$_REGION'
        - '--allow-unauthenticated' # Use this flag if you want public access to the service 
-     dir: 'frontend'
+     dir: 'code/frontend'
 options:
   logging: CLOUD_LOGGING_ONLY
   
