@@ -15,11 +15,7 @@
 steps:
   # Step 1: Build the Docker image for the backend with a unique tag.
   - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-middleware/api:$_GIT_REVISION'
-      - '.'
+    args:args: [ 'build', '-t', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-middleware/api:$_GIT_REVISION' ]
     dir: 'code/middleware'
 
   # Step 2: Push the unique image tag to Artifact Registry.
