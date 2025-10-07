@@ -13,8 +13,6 @@
 # limitations under the License.
 
 steps:
-options:
-  logging: CLOUD_LOGGING_ONLY
    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
      entrypoint: bash
      args: [ './massage.sh', '$_REGION' ]
@@ -32,6 +30,8 @@ options:
        - '--platform=managed'
        - '--region=$_REGION'
        - '--allow-unauthenticated' # Use this flag if you want public access to the service 
+options:
+  logging: CLOUD_LOGGING_ONLY       
 substitutions:
   _REGION: asia-south1
   _BASENAME: todo
