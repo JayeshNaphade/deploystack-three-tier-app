@@ -24,6 +24,7 @@ steps:
      args: ['push', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe']
   # Finally, deploy the image to Cloud Run.
    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+     entrypoint: 'gcloud'
      args:
        - 'run'
        - 'deploy'
