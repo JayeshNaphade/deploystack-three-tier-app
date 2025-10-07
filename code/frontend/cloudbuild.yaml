@@ -35,5 +35,5 @@ options:
   logging: CLOUD_LOGGING_ONLY
   
 substitutions:
-  _REGION: asia-south1
+  _REGION: us-central1
   _BASENAME: todo
