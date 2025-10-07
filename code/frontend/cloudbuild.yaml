@@ -20,6 +20,16 @@ steps:
      args: [ 'build', '-t', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe', '.' ]
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', '$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe']
+  # Finally, deploy the image to Cloud Run.
+   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+     args:
+       - 'run'
+       - 'deploy'
+       - '$_BASENAME-fe' # The name of your Cloud Run service
+       - '--image=$_REGION-docker.pkg.dev/$PROJECT_ID/$_BASENAME-app/fe'
+       - '--platform=managed'
+       - '--region=$_REGION'
+       - '--allow-unauthenticated' # Use this flag if you want public access to the service  
 substitutions:
-  _REGION: us-central1
+  _REGION: asia-south1
   _BASENAME: todo
